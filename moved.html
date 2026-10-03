@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What moved between runs</title>
+<meta name="description" content="Two runs of the same synthetic benchmark: how much of each score change came from the API and how much came from the benchmark's own changes.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="wrap">
+  <header class="hero">
+    <p class="eyebrow">Benchmark failure readout · what moved between runs</p>
+    <h1 id="moved-headline">Loading...</h1>
+    <p class="synthetic">Synthetic data. Fictional APIs.</p>
+    <p class="nav"><a href="index.html">Back to the run 1 readout</a></p>
+    <noscript><p class="hero-note">This page computes every number from its rows in the browser, so it needs JavaScript.</p></noscript>
+  </header>
+
+  <section id="changes" aria-labelledby="h-changes">
+    <h2 id="h-changes">What changed between run 1 and run 2</h2>
+    <p class="lede">Run 2 is run 1 with three planted changes. One comes from a vendor; two come from the benchmark itself.</p>
+    <ol id="changes-list"></ol>
+  </section>
+
+  <section id="split" aria-labelledby="h-split">
+    <h2 id="h-split">Score change by cause</h2>
+    <p class="lede">Each API's change in success rate, split into three causes. Bars to the right raised the score; bars to the left lowered it. The tick marks the net change.</p>
+    <div class="legend" id="cause-legend"></div>
+    <div class="chart" id="split-chart"></div>
+    <div class="table-wrap">
+      <table class="score" id="split-table"></table>
+    </div>
+    <p class="check-line" id="order-note"></p>
+    <p class="callout" id="refresh-note" hidden></p>
+  </section>
+
+  <section id="flips" aria-labelledby="h-flips">
+    <h2 id="h-flips">Flipped cells</h2>
+    <p class="lede">Every cell that went from wrong to right, or right to wrong, and the change that flipped it.</p>
+    <div class="filters" id="cause-filters" role="group" aria-label="Filter by cause"></div>
+    <div class="controls"><label>API <select id="flip-api"></select></label></div>
+    <p class="lede" id="flip-count"></p>
+    <div class="table-wrap">
+      <table class="rows" id="flip-table"></table>
+    </div>
+    <p><button type="button" id="flip-more" hidden>Show all</button></p>
+  </section>
+
+  <section id="lines" aria-labelledby="h-lines">
+    <h2 id="h-lines">Changelog and post lines</h2>
+    <p class="lede">Assembled by template from the split above, not written by a model.</p>
+    <div class="post" id="lines-text"></div>
+    <div class="post-actions">
+      <button type="button" id="copy-lines">Copy</button>
+      <span class="copy-status" id="copy-lines-status" aria-live="polite"></span>
+    </div>
+  </section>
+
+  <section id="moved-checks" aria-labelledby="h-moved-checks">
+    <details>
+      <summary id="h-moved-checks">Checks</summary>
+      <ul class="checks" id="moved-checks-list"></ul>
+    </details>
+  </section>
+
+  <section id="moved-questions" aria-labelledby="h-moved-questions">
+    <h2 id="h-moved-questions">Question I'd want answered</h2>
+    <ul class="questions">
+      <li>When our own rescoring moves a vendor's score, does the changelog lead with that number, or with the change that came from the vendor?</li>
+    </ul>
+  </section>
+</main>
+
+<footer class="wrap foot">
+  <p>Synthetic data. Fictional APIs and companies. Built by Dakshit Raj with Claude Code and Codex.</p>
+</footer>
+
+<script src="data.js"></script>
+<script src="readout.mjs"></script>
+<script src="ui.js"></script>
+<script src="moved.js"></script>
+</body>
+</html>

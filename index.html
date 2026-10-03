@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Benchmark failure readout</title>
+<meta name="description" content="One benchmark run on synthetic data: where the gap between two fictional APIs comes from, which misses might be the benchmark's own fault, and a draft post built from the numbers.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+  <defs>
+    <pattern id="pat-near_match" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect class="pat-bg-near" width="6" height="6"></rect>
+      <rect class="pat-fg-near" width="3" height="6"></rect>
+    </pattern>
+    <pattern id="pat-ref_outdated" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
+      <rect class="pat-bg-ref" width="6" height="6"></rect>
+      <rect class="pat-fg-ref" width="3" height="6"></rect>
+    </pattern>
+  </defs>
+</svg>
+
+<main class="wrap">
+  <header class="hero">
+    <p class="eyebrow">Benchmark failure readout · company data lookup · run 1</p>
+    <h1 id="headline">Loading the readout...</h1>
+    <p class="synthetic">Synthetic data. Fictional APIs.</p>
+    <p class="hero-note" id="headline-note" hidden></p>
+    <noscript><p class="hero-note">This page computes every number from its rows in the browser, so it needs JavaScript.</p></noscript>
+  </header>
+
+  <section id="scoreboard" aria-labelledby="h-scoreboard">
+    <h2 id="h-scoreboard">Scoreboard</h2>
+    <p class="lede" id="scoreboard-lede"></p>
+    <div class="table-wrap">
+      <table class="score" id="score-table"></table>
+    </div>
+  </section>
+
+  <section id="gap" aria-labelledby="h-gap">
+    <h2 id="h-gap">Where the gap comes from</h2>
+    <div class="controls">
+      <label>Explain <select id="sel-api"></select></label>
+      <label>compare to <select id="sel-compare"></select></label>
+    </div>
+    <p class="lede" id="gap-lede"></p>
+    <div class="chart" id="gap-chart"></div>
+    <p class="stat" id="gap-summary"></p>
+    <p class="check-line" id="gap-check"></p>
+  </section>
+
+  <section id="field" aria-labelledby="h-field">
+    <h2 id="h-field">Failure mode of the field</h2>
+    <p class="callout" id="field-callout"></p>
+    <p class="lede">Failure rate by company slice for all six APIs, split by reason. Striped reasons might be the benchmark's own fault. Click a segment to see its rows.</p>
+    <div class="legend" id="legend"></div>
+    <div class="panels" id="field-panels"></div>
+  </section>
+
+  <section id="rows" aria-labelledby="h-rows">
+    <h2 id="h-rows">The rows behind it</h2>
+    <p class="lede" id="rows-title"></p>
+    <div class="table-wrap">
+      <table class="rows" id="rows-table"></table>
+    </div>
+  </section>
+
+  <section id="check" aria-labelledby="h-check">
+    <h2 id="h-check">Check before posting</h2>
+    <p class="lede">Two kinds of miss might be the benchmark's fault, not the API's: a near match judged wrong, and a reference that may be outdated. Setting them aside takes them out of both the top and the bottom of every score. If the finding only holds with them in, it isn't ready to post.</p>
+    <label class="toggle">
+      <input type="checkbox" id="toggle-setaside">
+      <span>Set aside cells that might be the benchmark's fault</span>
+    </label>
+    <div id="check-result"></div>
+  </section>
+
+  <section id="post" aria-labelledby="h-post">
+    <h2 id="h-post">Draft post</h2>
+    <p class="lede">Assembled by template from the numbers above, not written by a model. It follows the current selection and the set-aside switch.</p>
+    <div class="post" id="post-text"></div>
+    <div class="post-actions">
+      <button type="button" id="copy-post">Copy</button>
+      <span class="copy-status" id="copy-status" aria-live="polite"></span>
+    </div>
+  </section>
+
+  <section id="how" aria-labelledby="h-how">
+    <h2 id="h-how">How it's scored</h2>
+    <div id="how-body"></div>
+  </section>
+
+  <section id="checks" aria-labelledby="h-checks">
+    <details>
+      <summary id="h-checks">Checks</summary>
+      <ul class="checks" id="checks-list"></ul>
+    </details>
+  </section>
+
+  <section id="questions" aria-labelledby="h-questions">
+    <h2 id="h-questions">Questions I'd want answered</h2>
+    <ul class="questions">
+      <li>When the judge's reason and a human label disagree on a near match, which one does a public post go with?</li>
+      <li>If the scored set stays private, which example rows can a post show?</li>
+      <li>Does a vendor see a failure finding before it goes out?</li>
+      <li>Do posts go out with each release (new vendor, data refresh) or only when a finding is strong enough?</li>
+    </ul>
+  </section>
+</main>
+
+<footer class="wrap foot">
+  <p>Synthetic data. Fictional APIs and companies. Built by Dakshit Raj with Claude Code and Codex.</p>
+</footer>
+
+<script src="data.js"></script>
+<script src="readout.mjs"></script>
+<script src="ui.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
