@@ -25,7 +25,7 @@ Everything is synthetic: six fictional APIs (API A to API F) look up five fields
 - A table of every flipped cell, filterable by cause and by API.
 - A generated changelog line and post line, for example "API C +N points: M from new answers, K from our rescoring."
 
-`moved.html` links back to `index.html`, but `index.html` does not link to it yet. To link it, add this line under the "Synthetic data" label in `index.html`:
+`moved.html` links back to `index.html`, but `index.html` does not link to it yet, so open it directly: https://duckky153.github.io/benchmark-failure-readout/moved.html. To link it from the first page, add this line under the "Synthetic data" label in `index.html`:
 
 ```html
 <p class="nav"><a href="moved.html">What moved between runs</a></p>
